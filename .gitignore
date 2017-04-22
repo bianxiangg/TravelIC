@@ -9,3 +9,4 @@ obj
 node_modules
 .vscode
 Properties
+/wwwroot/images/TempUpload/*
