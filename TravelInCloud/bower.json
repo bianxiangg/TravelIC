@@ -8,6 +8,7 @@
     "jquery-validation-unobtrusive": "3.2.6",
     "weui": "^1.0.1",
     "zepto": "^1.1.6",
-    "Swiper": "swiper#^3.3.1"
+    "Swiper": "swiper#^3.3.1",
+    "vue": "v2.2.6"
   }
 }
