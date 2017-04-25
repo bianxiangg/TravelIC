@@ -7,6 +7,11 @@
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_NewBackgroundProfile>False</_NewBackgroundProfile>
-    <_PublishTargetUrl>C:\Users\Administrator\Desktop\sitemenu1</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\Administrator\Desktop\gitsite</_PublishTargetUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="TravelInCloud.Data.ApplicationDbContext">
+      <Value>Server=(localdb)\mssqllocaldb;Database=gitclone;Trusted_Connection=True;MultipleActiveResultSets=true</Value>
+    </EFMigrations>
+  </ItemGroup>
 </Project>
