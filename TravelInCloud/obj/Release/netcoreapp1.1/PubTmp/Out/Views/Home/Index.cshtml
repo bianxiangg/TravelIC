@@ -1,0 +1,160 @@
+﻿@model TravelInCloud.Models.HomeViewModels.IndexViewModel
+@{
+    Layout = "_LayoutFish";
+}
+@section css{
+    <link rel="stylesheet" type="text/css" href="~/lib/Swiper/dist/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/index.css">
+    <style>
+        .i-bor img {
+            width: 2rem;
+        }
+    </style>
+}
+@section js{
+    <script type="text/javascript">
+        $(function () {
+            //$(".region-layer ul").css({"max-height":$(window).height()*0.6-$(".region-layer h3").height()});
+            $(".region-layer").css({ "margin-top": -$(".region-layer").height() / 2 });
+            $(".close-reglayer").click(function () {
+                $(".region-layer").removeClass("thisshow");
+                $(".region-layer").hide();
+                $(".mask").hide();
+                $('body').removeAttr('style');
+            });
+            //头部地区选择
+            $(".region-this").click(function () {
+                $(".region-layer").show();
+                $(".mask").show();
+                $('body').css({ 'overflow': 'hidden', 'height': $(window).height(), 'position': 'fixed', 'left': 0, 'top': 0, 'right': 0 });
+                $(".region-layer").addClass("thisshow");
+            });
+        });
+    </script>
+}
+<input type="hidden" name="flag" id="flag" value="" />
+<!--返回顶部 start-->
+<div class="gotop"></div>
+<!--返回顶部 end-->
+<!--头部 start-->
+<div class="header">
+    <h1 class="logo fl">云中旅行</h1>
+    <div class="header-r fr">
+        <div class="region-screen">
+            <strong class="region-this">@(Model.CurrentLocation?.LocationName ?? "全部")</strong>
+        </div>
+        @*<div class="header-login">
+                <a href="/wap/user/consumer.htm"></a>
+            </div>*@
+    </div>
+</div>
+<!--头部 end-->
+<!--banner start-->
+<div class="swiper-container home-slider">
+    <ul class="swiper-wrapper">
+        <li class="swiper-slide">
+            <a href="/Home/Product/2"><img src="~/images/member/header.jpg" alt="" /></a>
+        </li>
+        <li class="swiper-slide">
+            <a href="/Home/Product/2"><img src="~/images/member/orderheader.jpg" alt="" /></a>
+        </li>
+        <li class="swiper-slide">
+            <a href="/Home/Product/2"><img src="~/images/member/signinheader.jpg" alt="" /></a>
+        </li>
+    </ul>
+    <div class="swiper-pagination"></div>
+</div>
+<!--banner end-->
+<!--nav start-->
+<div class="nav clearfix">
+    <a asp-controller="Home" asp-action="ProductList" asp-route-StoreType="2">
+        <strong class="i-bor"><img src="~/images/icons/11.png" /></strong>
+        <span>门票</span>
+    </a>
+    <a asp-controller="Home" asp-action="ProductList" asp-route-StoreType="12">
+        <strong class="i-bor"><img src="~/images/icons/22.png" /></strong>
+        <span>租车</span>
+    </a>
+    <a asp-controller="Home" asp-action="ProductList" asp-route-StoreType="1">
+        <strong class="i-bor"><img src="~/images/icons/33.png" /></strong>
+        <span>酒店</span>
+    </a>
+    <a asp-controller="Home" asp-action="ProductList" asp-route-StoreType="4">
+        <strong class="i-bor"><img src="~/images/icons/44.png" /></strong>
+        <span>洗浴汗蒸</span>
+    </a>
+    <a asp-controller="Home" asp-action="ProductList" asp-route-StoreType="3">
+        <strong class="i-bor"><img src="~/images/icons/55.png" /></strong>
+        <span>酒吧KTV</span>
+    </a>
+    <a asp-controller="Home" asp-action="ProductList" asp-route-StoreType="11">
+        <strong class="i-bor"><img src="~/images/icons/66.png" /></strong>
+        <span>购物</span>
+    </a>
+    <a asp-controller="Home" asp-action="ProductList" asp-route-StoreType="10">
+        <strong class="i-bor"><img src="~/images/icons/77.png" /></strong>
+        <span>美食</span>
+    </a>
+    <a asp-controller="Home" asp-action="ProductList">
+        <strong class="i-bor"><img src="~/images/icons/88.png" /></strong>
+        <span>领金币</span>
+    </a>
+    <a asp-controller="Home" asp-action="ProductList" asp-route-StoreType="13">
+        <strong class="i-bor"><img src="~/images/icons/99.png" /></strong>
+        <span>周边游</span>
+    </a>
+    <a asp-controller="Home" asp-action="ProductList" asp-route-StoreType="14">
+        <strong class="i-bor"><img src="~/images/icons/100.png" /></strong>
+        <span>跟团游</span>
+    </a>
+</div>
+<!--nav end-->
+<div class="page-line"></div>
+<!--活动 start-->
+<div class="home-activity clearfix">
+    <a href="/Home/Product/2">
+        <img src="~/images/member/signinheader2.jpg" alt="">
+    </a>
+    <a href="/Home/Product/3">
+
+        <img src="~/images/member/signinheader.jpg" alt="">
+    </a>
+</div>
+<div class="page-line"></div>
+<!--活动 end-->
+<!--热销产品 start-->
+<div class="hot-pro">
+    <h3>精品推荐<em>Best Suggestion</em></h3>
+    <ul>
+        @foreach (var P in Model.Products)
+        {
+            <li>
+                <a asp-action="Product" asp-controller="Home" asp-route-id="@P.ProductId">
+                    <img src="@P.TryGetFirst()" alt="">
+                    <div class="gline-con">
+                        <h4>@P.ProductName</h4>
+                        <p class="con-text"></p>
+                        <p class="con-lab">
+                            <span class="price"><em>￥@P.TryGetPrice()</em> <del>￥@P.TryGetPrice()</del></span>
+                            <span class="sold">已售：@P.BuyTimes</span>&nbsp;
+                            <span class="sold" style="margin-right:10px;">浏览次数：@P.ViewTimes</span>
+                        </p>
+                    </div>
+                </a>
+            </li>
+        }
+    </ul>
+</div>
+
+<!--底部 end-->
+<div class="mask"></div>
+<div class="region-layer">
+    <h3>选择城市<a href="javascript:;" class="close-reglayer"><i class="font-icon icon-iconfont-32pxchaxian"></i></a></h3>
+    <ul>
+        <li class="cur"><a asp-route-LocationId="-1">全部</a></li>
+        @foreach (var Loc in Model.Locations)
+        {
+            <li class="cur"><a asp-route-LocationId="@Loc.LocationId">@Loc.LocationName</a></li>
+        }
+    </ul>
+</div>

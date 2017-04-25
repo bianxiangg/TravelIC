@@ -1,0 +1,59 @@
+@model TravelInCloud.Models.ProductType
+
+@{
+    ViewData["Title"] = "创建商品类型";
+}
+
+<form asp-action="Create" asp-controller="ProductTypes" method="post" class="page input" style="opacity: 1;">
+    <div class="page__bd">
+        <input type="hidden" asp-for="BelongingProductId" />
+        <div asp-validation-summary="All" class="page__desc"></div>
+        <div class="weui-cells__title">新建商品表单</div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">商品类型名称</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" asp-for="ProductTypeName" placeholder="例如：学生票">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">优惠前价格</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" asp-for="OldPrice" placeholder="这将以被划掉的形式显示给用户">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">价格</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" asp-for="Price" placeholder="这将直接显示给用户">
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-cells__title">商品类型细节</div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea class="weui-textarea" asp-for="ProductTypeDetails" placeholder="例如：仅限学生使用" rows="5"></textarea>
+                    <div class="weui-textarea-counter"><span>0</span>/200</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-btn-area">
+            <button class="weui-btn weui-btn_primary" id="showTooltips" type="submit">保存商品类型 </button>
+        </div>
+    </div>
+    <div class="page__ft">
+        <a href="javascript:home()"><img src="./images/icon_footer_link.png"></a>
+    </div>
+</form>
+
+<div class="page__bd page__bd_spacing">
+    <a class="weui-btn weui-btn_warn" asp-action="Index" asp-controller="ProductTypes" asp-route-ProductId="@Model.BelongingProductId">返回商品类型列表</a>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

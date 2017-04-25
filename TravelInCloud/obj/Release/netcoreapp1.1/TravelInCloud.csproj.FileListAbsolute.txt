@@ -1,0 +1,10 @@
+D:\盛世光明文档\云中旅行网\gittravel\TravelIC\TravelInCloud\bin\Release\netcoreapp1.1\TravelInCloud.deps.json
+D:\盛世光明文档\云中旅行网\gittravel\TravelIC\TravelInCloud\bin\Release\netcoreapp1.1\TravelInCloud.runtimeconfig.json
+D:\盛世光明文档\云中旅行网\gittravel\TravelIC\TravelInCloud\bin\Release\netcoreapp1.1\TravelInCloud.runtimeconfig.dev.json
+D:\盛世光明文档\云中旅行网\gittravel\TravelIC\TravelInCloud\bin\Release\netcoreapp1.1\TravelInCloud.dll
+D:\盛世光明文档\云中旅行网\gittravel\TravelIC\TravelInCloud\bin\Release\netcoreapp1.1\TravelInCloud.pdb
+D:\盛世光明文档\云中旅行网\gittravel\TravelIC\TravelInCloud\obj\Release\netcoreapp1.1\TravelInCloud.csprojResolveAssemblyReference.cache
+D:\盛世光明文档\云中旅行网\gittravel\TravelIC\TravelInCloud\obj\Release\netcoreapp1.1\UserSecretsAssemblyInfo.cs
+D:\盛世光明文档\云中旅行网\gittravel\TravelIC\TravelInCloud\obj\Release\netcoreapp1.1\TravelInCloud.AssemblyInfo.cs
+D:\盛世光明文档\云中旅行网\gittravel\TravelIC\TravelInCloud\obj\Release\netcoreapp1.1\TravelInCloud.dll
+D:\盛世光明文档\云中旅行网\gittravel\TravelIC\TravelInCloud\obj\Release\netcoreapp1.1\TravelInCloud.pdb

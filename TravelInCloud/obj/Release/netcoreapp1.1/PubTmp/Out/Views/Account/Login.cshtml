@@ -1,0 +1,70 @@
+﻿@using System.Collections.Generic
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+@model LoginViewModel
+
+
+@{
+    Layout = "_LayoutFish";
+    ViewData["Title"] = "登录";
+}
+
+@section css{
+<link rel="stylesheet" href="~/lib/weui/dist/style/weui.min.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/lib/weui/dist/example/example.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/member.css" asp-append-version="true" />
+}
+<header class="member-signinheader" style="height:8em;">
+    <h2 class="user-name c-333">
+        登录云游账号
+    </h2>
+    <div class="page__ft">
+    </div>
+    <p class="header-explian c-666">提示：在官方公众号云中旅行中中打开可以直接登录</p>
+    <div class="page__ft">
+    </div>
+</header>
+<form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+        <div asp-validation-summary="All" class="page__desc" style="margin-top:0"></div>
+    <div class="weui-cells weui-cells_form" style="margin-top:0">
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <label class="weui-label">邮箱账号</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input asp-for="Email" class="weui-input" type="email" placeholder="请输入作为云游账号的邮箱账号">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <label class="weui-label">密码</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input asp-for="Password" class="weui-input" type="password" placeholder="请输入云游账号密码">
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_switch">
+            <div class="weui-cell__bd">下次自动登录</div>
+            <div class="weui-cell__ft">
+                <input asp-for="RememberMe" class="weui-switch" type="checkbox">
+            </div>
+        </div>
+    </div>
+
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__ft">
+            <a class="weui-form-preview__btn weui-form-preview__btn_default" asp-controller="Account" asp-action="Register">注册</a>
+            <button class="weui-form-preview__btn weui-form-preview__btn_primary" type="submit">登录</button>
+        </div>
+    </div>
+
+    <label class="weui-agree" for="weuiAgree">
+        <span class="weui-agree__text">
+            登录即视为同意<a href="javascript:void(0);">《相关条款》</a>
+        </span>
+    </label>
+</form>
+
+@section js {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

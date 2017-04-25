@@ -1,0 +1,109 @@
+﻿@model TravelInCloud.Models.HomeViewModels.MineViewModel
+@{
+    ViewData["Title"] = "我的";
+}
+
+<div class="page__bd flex">
+    <div class="weui-panel weui-panel_access">
+        <div class="weui-panel__bd">
+            <a class="weui-media-box weui-media-box_appmsg" href="javascript:void(0);">
+                <div class="weui-media-box__hd">
+                    <img class="weui-media-box__thumb" alt="" src="@Model.IconAddress">
+                </div>
+                <div class="weui-media-box__bd">
+                    <h4 class="weui-media-box__title">@Model.NickName</h4>
+                    <p class="weui-media-box__desc">积分值：3460</p>
+                </div>
+            </a>
+        </div>
+        <a class="weui-cell weui-cell_access" href="javascript:;">
+            <div class="weui-cell__bd">
+                <p>修改头像</p>
+            </div>
+            <div class="weui-cell__ft">
+            </div>
+        </a>
+    </div>
+    @*<div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>订单列表</p>
+            </div>
+            <div class="weui-cell__ft">这里是你所有的订单</div>
+        </div>
+    </div>*@
+    @*<div class="weui-flex weui-form-preview">
+        <div class="weui-flex__item">
+            <div class="placeholder">
+                <div class="weui-form-preview__ft">
+                    <i class="weui-icon-cancel"></i>
+                    <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">待付款</a>
+                </div>
+            </div>
+        </div>
+        <div class="weui-flex__item">
+            <div class="placeholder">
+                <div class="weui-form-preview__ft">
+                    <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">未使用</a>
+                </div>
+            </div>
+        </div>
+        <div class="weui-flex__item">
+            <div class="placeholder">
+                <div class="weui-form-preview__ft">
+                    <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">未评价</a>
+                </div>
+            </div>
+        </div>
+        <div class="weui-flex__item">
+            <div class="placeholder">
+                <div class="weui-form-preview__ft">
+                    <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">退款/售后</a>
+                </div>
+            </div>
+        </div>
+    </div>*@
+</div>
+
+<div class="weui-cells">
+    <a class="weui-cell weui-cell_access" asp-controller="Home" asp-action="ChangeMyInfo">
+        <div class="weui-cell__bd">
+            <p>修改个人信息</p>
+        </div>
+        <div class="weui-cell__ft">姓名、手机、身份证号</div>
+    </a>
+    @if (Model.OurAccount)
+    {
+        <a class="weui-cell weui-cell_access" asp-controller="Manage" asp-action="ChangePassword">
+            <div class="weui-cell__bd">
+                <p>修改密码</p>
+            </div>
+            <div class="weui-cell__ft">输入新密码</div>
+        </a>
+    }
+    else
+    {
+        <a class="weui-cell weui-cell_access" asp-controller="Home" asp-action="CreateAccount">
+            <div class="weui-cell__bd">
+                <p>创建账户</p>
+            </div>
+            <div class="weui-cell__ft">创建你的账户以便在微信外访问</div>
+        </a>
+    }
+    <a class="weui-cell weui-cell_access" href="javascript:;">
+        <div class="weui-cell__bd">
+            <p>意见反馈</p>
+        </div>
+        <div class="weui-cell__ft">告诉我们哪里可以改进</div>
+    </a>
+    <a class="weui-cell weui-cell_access" asp-controller="Home" asp-action="Settings">
+        <div class="weui-cell__bd">
+            <p>商店设置</p>
+        </div>
+        <div class="weui-cell__ft">关于和申请开店</div>
+    </a>
+</div>
+
+
+
+

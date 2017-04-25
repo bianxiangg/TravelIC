@@ -1,0 +1,59 @@
+﻿@model TravelInCloud.Models.HomeViewModels.PayViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>微信支付API接入</title>
+</head>
+
+<body>
+    <script>
+        //调用微信JS api 支付
+        function jsApiCall()
+        {
+            if(!WeixinJSBridge){
+                alert('必须在微信浏览器中浏览！请关注微信公众账号：“云中旅行网”！');
+            }
+            WeixinJSBridge.invoke(
+            'getBrandWCPayRequest',
+             @Html.Raw(Model.wxJsApiParam),//josn串
+             function (res)
+             {
+                 WeixinJSBridge.log(res.err_msg);
+                 if(res.err_msg=="get_brand_wcpay_request:ok")                 {
+                     alert('支付成功!');
+                     window.location.href='/Home/PayFinished';
+                 }
+                 else{
+                     alert('支付失败');
+                     window.location.href='/Home/Order';
+                 }
+             });
+        }
+        function Pay(){
+            if (typeof WeixinJSBridge == "undefined")
+            {
+                if (document.addEventListener)
+                {
+                    document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                }
+                else if (document.attachEvent)
+                {
+                    document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                    document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                }
+            }
+            else
+            {
+                jsApiCall();
+            }
+        }
+        Pay();
+    </script>
+</body>
+</html>
